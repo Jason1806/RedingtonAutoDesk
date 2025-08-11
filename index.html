@@ -47,6 +47,273 @@
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 30%, #000000 70%, #ffffff 100%);
         }
 
+        /* ===== ZAP LIGHTNING ANIMATIONS ===== */
+        .zap-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .zap {
+            position: absolute;
+            background: linear-gradient(45deg, #59B557, #ffffff, #59B557);
+            opacity: 0;
+            transform-origin: center;
+        }
+
+        .zap-1 {
+            width: 3px;
+            height: 100px;
+            top: 10%;
+            left: 15%;
+            animation: zapFlash1 4s ease-in-out infinite;
+        }
+
+        .zap-2 {
+            width: 2px;
+            height: 80px;
+            top: 20%;
+            right: 20%;
+            animation: zapFlash2 3.5s ease-in-out infinite 1s;
+        }
+
+        .zap-3 {
+            width: 4px;
+            height: 120px;
+            top: 35%;
+            left: 75%;
+            animation: zapFlash3 5s ease-in-out infinite 2s;
+        }
+
+        .zap-4 {
+            width: 2px;
+            height: 90px;
+            top: 50%;
+            left: 10%;
+            animation: zapFlash4 4.5s ease-in-out infinite 0.5s;
+        }
+
+        .zap-5 {
+            width: 3px;
+            height: 110px;
+            top: 60%;
+            right: 15%;
+            animation: zapFlash5 3.8s ease-in-out infinite 1.5s;
+        }
+
+        .zap-6 {
+            width: 5px;
+            height: 60px;
+            top: 15%;
+            left: 50%;
+            animation: zapFlash6 4.2s ease-in-out infinite 2.5s;
+        }
+
+        @keyframes zapFlash1 {
+            0%, 90%, 100% { 
+                opacity: 0; 
+                transform: scaleY(0) rotate(15deg);
+                box-shadow: 0 0 0 transparent;
+            }
+            5%, 10% { 
+                opacity: 1; 
+                transform: scaleY(1) rotate(15deg);
+                box-shadow: 0 0 20px #59B557, 0 0 40px #ffffff;
+            }
+        }
+
+        @keyframes zapFlash2 {
+            0%, 90%, 100% { 
+                opacity: 0; 
+                transform: scaleY(0) rotate(-25deg);
+                box-shadow: 0 0 0 transparent;
+            }
+            8%, 15% { 
+                opacity: 0.8; 
+                transform: scaleY(1) rotate(-25deg);
+                box-shadow: 0 0 15px #59B557, 0 0 30px #ffffff;
+            }
+        }
+
+        @keyframes zapFlash3 {
+            0%, 85%, 100% { 
+                opacity: 0; 
+                transform: scaleY(0) rotate(35deg);
+                box-shadow: 0 0 0 transparent;
+            }
+            3%, 12% { 
+                opacity: 1; 
+                transform: scaleY(1) rotate(35deg);
+                box-shadow: 0 0 25px #59B557, 0 0 50px #ffffff;
+            }
+        }
+
+        @keyframes zapFlash4 {
+            0%, 88%, 100% { 
+                opacity: 0; 
+                transform: scaleY(0) rotate(-15deg);
+                box-shadow: 0 0 0 transparent;
+            }
+            6%, 14% { 
+                opacity: 0.9; 
+                transform: scaleY(1) rotate(-15deg);
+                box-shadow: 0 0 18px #59B557, 0 0 35px #ffffff;
+            }
+        }
+
+        @keyframes zapFlash5 {
+            0%, 92%, 100% { 
+                opacity: 0; 
+                transform: scaleY(0) rotate(45deg);
+                box-shadow: 0 0 0 transparent;
+            }
+            4%, 11% { 
+                opacity: 0.7; 
+                transform: scaleY(1) rotate(45deg);
+                box-shadow: 0 0 22px #59B557, 0 0 45px #ffffff;
+            }
+        }
+
+        @keyframes zapFlash6 {
+            0%, 87%, 100% { 
+                opacity: 0; 
+                transform: scaleY(0) rotate(-5deg);
+                box-shadow: 0 0 0 transparent;
+            }
+            7%, 16% { 
+                opacity: 1; 
+                transform: scaleY(1) rotate(-5deg);
+                box-shadow: 0 0 30px #59B557, 0 0 60px #ffffff;
+            }
+        }
+
+        /* Corner Lightning Bolts */
+        .corner-zap {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            opacity: 0;
+        }
+
+        .corner-zap-1 {
+            top: 5%;
+            left: 5%;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 25px solid #59B557;
+            animation: cornerFlash1 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px #59B557);
+        }
+
+        .corner-zap-2 {
+            top: 8%;
+            right: 8%;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 20px solid #ffffff;
+            animation: cornerFlash2 5.5s ease-in-out infinite 1.5s;
+            filter: drop-shadow(0 0 8px #ffffff);
+        }
+
+        .corner-zap-3 {
+            bottom: 15%;
+            left: 10%;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 30px solid #59B557;
+            animation: cornerFlash3 7s ease-in-out infinite 3s;
+            filter: drop-shadow(0 0 12px #59B557);
+        }
+
+        .corner-zap-4 {
+            bottom: 12%;
+            right: 12%;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 22px solid #ffffff;
+            animation: cornerFlash4 6.5s ease-in-out infinite 2s;
+            filter: drop-shadow(0 0 9px #ffffff);
+        }
+
+        @keyframes cornerFlash1 {
+            0%, 95%, 100% { 
+                opacity: 0; 
+                transform: scale(0) rotate(0deg);
+            }
+            2%, 8% { 
+                opacity: 1; 
+                transform: scale(1) rotate(15deg);
+            }
+        }
+
+        @keyframes cornerFlash2 {
+            0%, 93%, 100% { 
+                opacity: 0; 
+                transform: scale(0) rotate(0deg);
+            }
+            4%, 10% { 
+                opacity: 0.8; 
+                transform: scale(1) rotate(-10deg);
+            }
+        }
+
+        @keyframes cornerFlash3 {
+            0%, 91%, 100% { 
+                opacity: 0; 
+                transform: scale(0) rotate(0deg);
+            }
+            3%, 9% { 
+                opacity: 1; 
+                transform: scale(1) rotate(25deg);
+            }
+        }
+
+        @keyframes cornerFlash4 {
+            0%, 94%, 100% { 
+                opacity: 0; 
+                transform: scale(0) rotate(0deg);
+            }
+            5%, 12% { 
+                opacity: 0.9; 
+                transform: scale(1) rotate(-20deg);
+            }
+        }
+
+        /* Electric Border Effect */
+        .electric-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid transparent;
+            border-radius: 0;
+            background: linear-gradient(45deg, transparent, transparent) padding-box,
+                        linear-gradient(45deg, #59B557, #ffffff, #59B557) border-box;
+            opacity: 0;
+            animation: electricBorder 8s ease-in-out infinite;
+        }
+
+        @keyframes electricBorder {
+            0%, 85%, 100% { 
+                opacity: 0;
+                border-width: 2px;
+            }
+            5%, 15% { 
+                opacity: 0.6;
+                border-width: 3px;
+                box-shadow: 
+                    inset 0 0 20px rgba(89, 181, 87, 0.3),
+                    0 0 20px rgba(89, 181, 87, 0.3);
+            }
+        }
+
         /* ===== FLOATING SHAPES ===== */
         .floating-shape {
             position: absolute;
@@ -738,14 +1005,181 @@
 
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                line-height: 1.6;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+            }
+
+            header {
+                padding: 60px 30px 120px;
+            }
+
             .container {
-                margin: -40px 20px 60px;
-                padding: 60px 30px;
-                border-radius: 24px;
+                margin: -60px 20px 80px;
+                padding: 60px 40px;
+                border-radius: 32px;
+                max-width: 100%;
+                overflow-x: hidden;
             }
 
             header h1 {
+                font-size: 3.4rem;
+                margin-bottom: 20px;
+            }
+
+            header p {
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+            }
+
+            .event-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 20px;
+            }
+
+            .event-tagline {
+                font-size: 1rem;
+                margin-bottom: 25px;
+            }
+
+            h2 {
                 font-size: 2.8rem;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 2.2rem;
+                margin: 50px 0 35px;
+            }
+
+            .brand-logos {
+                flex-direction: row;
+                gap: 40px;
+                margin-bottom: 30px;
+            }
+
+            .logo {
+                max-width: 160px;
+            }
+
+            .autodesk-logo {
+                max-width: 160px;
+            }
+
+            .logo-divider {
+                width: 3px;
+                height: 50px;
+            }
+
+            .intro-text {
+                font-size: 1.15rem;
+                padding: 30px;
+                margin-bottom: 50px;
+            }
+
+            .event-details {
+                padding: 40px;
+                margin: 60px 0;
+            }
+
+            .event-details-title {
+                font-size: 1.6rem;
+                margin-bottom: 30px;
+            }
+
+            .event-details p {
+                font-size: 1.1rem;
+                padding: 16px 25px;
+                margin: 18px 0;
+            }
+
+            .benefits-list li {
+                padding: 20px 25px;
+                font-size: 1.05rem;
+                margin: 18px 0;
+            }
+
+            .rsvp-section {
+                padding: 35px;
+                margin: 45px 0;
+            }
+
+            .rsvp-section strong {
+                font-size: 1.4rem;
+            }
+
+            .phone-link {
+                font-size: 1.15rem;
+            }
+
+            .register-btn {
+                padding: 22px 55px;
+                font-size: 1.3rem;
+                margin: 35px auto;
+            }
+
+            .quick-register-btn {
+                padding: 14px 30px;
+                font-size: 1.05rem;
+            }
+
+            /* Keep zap animations but scale them slightly */
+            .zap {
+                transform: scale(0.9);
+            }
+
+            .corner-zap {
+                transform: scale(0.8);
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 15px;
+                line-height: 1.5;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                scroll-behavior: smooth;
+                overflow-x: hidden;
+            }
+
+            * {
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            header {
+                padding: 50px 25px 100px;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .header-content {
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 3rem;
+                line-height: 1.1;
+            }
+
+            header p {
+                font-size: 1.3rem;
+            }
+
+            .event-subtitle {
+                font-size: 1rem;
+            }
+
+            .event-tagline {
+                font-size: 0.95rem;
             }
 
             h2 {
@@ -756,42 +1190,229 @@
                 font-size: 2rem;
             }
 
+            .container {
+                margin: -50px 15px 60px;
+                padding: 50px 30px;
+                border-radius: 28px;
+                width: calc(100% - 30px);
+                max-width: 100%;
+                overflow-x: hidden;
+                box-sizing: border-box;
+            }
+
+            /* Better touch targets for mobile */
+            .quick-register-btn,
+            .register-btn {
+                min-height: 48px;
+                touch-action: manipulation;
+                -webkit-appearance: none;
+                appearance: none;
+            }
+
+            /* Improved scrolling */
+            .intro-text,
+            .event-details,
+            .benefits-list {
+                scroll-margin-top: 20px;
+            }
+
+            /* Better text rendering on mobile */
+            h1, h2, h3 {
+                text-rendering: optimizeLegibility;
+                -webkit-font-smoothing: antialiased;
+            }
+
             .brand-logos {
-                flex-direction: column;
                 gap: 30px;
             }
 
+            .logo {
+                max-width: 140px;
+            }
+
+            .autodesk-logo {
+                max-width: 140px;
+            }
+
             .logo-divider {
-                width: 60px;
-                height: 3px;
+                width: 3px;
+                height: 40px;
+            }
+
+            .intro-text {
+                font-size: 1.1rem;
+                padding: 25px;
+                line-height: 1.7;
+            }
+
+            .event-details {
+                padding: 35px 25px;
+                margin: 50px 0;
+                border-radius: 24px;
+                background: linear-gradient(135deg, 
+                    rgba(255, 255, 255, 0.98) 0%, 
+                    rgba(248, 249, 250, 0.95) 50%,
+                    rgba(255, 255, 255, 0.98) 100%);
+                box-shadow: 
+                    0 20px 50px rgba(0, 0, 0, 0.1),
+                    0 0 0 1px rgba(89, 181, 87, 0.2);
+                backdrop-filter: blur(20px);
+            }
+
+            .event-details-title {
+                font-size: 1.5rem;
+                margin-bottom: 25px;
+                text-align: center;
+                color: transparent;
+                background: linear-gradient(45deg, #000000, #59B557, #000000);
+                background-size: 200% 200%;
+                -webkit-background-clip: text;
+                background-clip: text;
+                animation: textShimmer 3s ease-in-out infinite;
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+
+            .event-details p {
+                font-size: 1.05rem;
+                padding: 16px 20px;
+                margin: 12px 0;
+                border-radius: 16px;
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.8));
+                box-shadow: 0 8px 25px rgba(89, 181, 87, 0.1);
+                border: 1px solid rgba(89, 181, 87, 0.1);
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+                transition: all 0.3s ease;
+            }
+
+            .event-details p:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 12px 35px rgba(89, 181, 87, 0.15);
+            }
+
+            .event-details p strong {
+                font-size: 1.1rem;
+                color: transparent;
+                background: linear-gradient(45deg, #000000, #59B557);
+                -webkit-background-clip: text;
+                background-clip: text;
+                font-weight: 700;
+                margin-bottom: 4px;
+                display: block;
+            }
+
+            .rsvp-section {
+                padding: 30px 25px;
+                margin: 40px 0;
+                border-radius: 20px;
+                background: linear-gradient(135deg, 
+                    rgba(89, 181, 87, 0.05) 0%,
+                    rgba(255, 255, 255, 0.98) 25%,
+                    rgba(248, 249, 250, 0.95) 75%,
+                    rgba(89, 181, 87, 0.05) 100%);
+                box-shadow: 
+                    0 15px 40px rgba(89, 181, 87, 0.1),
+                    0 0 0 2px rgba(89, 181, 87, 0.1);
+                backdrop-filter: blur(15px);
+                text-align: center;
+                border: 1px solid rgba(89, 181, 87, 0.2);
+            }
+
+            .rsvp-section strong {
+                font-size: 1.4rem;
+                color: transparent;
+                background: linear-gradient(45deg, #000000, #59B557);
+                -webkit-background-clip: text;
+                background-clip: text;
+                font-weight: 800;
+                display: block;
+                margin-bottom: 20px;
+                letter-spacing: 0.5px;
+                line-height: 1.3;
+            }
+
+            .rsvp-section p {
+                margin-top: 15px;
+                font-size: 1.1rem;
+                color: #2d3748;
+                font-weight: 500;
+            }
+
+            .phone-link {
+                color: transparent;
+                background: linear-gradient(45deg, #000000, #59B557);
+                -webkit-background-clip: text;
+                background-clip: text;
+                text-decoration: none;
+                font-weight: 700;
+                font-size: 1.2rem;
+                padding: 12px 20px;
+                border-radius: 12px;
+                background-color: rgba(89, 181, 87, 0.1);
+                border: 2px solid rgba(89, 181, 87, 0.2);
+                display: inline-block;
+                margin-top: 10px;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
             }
 
             .benefits-list li {
                 padding: 20px 25px;
                 font-size: 1rem;
+                margin: 15px 0;
+                border-radius: 18px;
+                background: linear-gradient(135deg, 
+                    rgba(255, 255, 255, 0.98), 
+                    rgba(248, 249, 250, 0.95));
+                box-shadow: 
+                    0 12px 30px rgba(89, 181, 87, 0.08),
+                    0 0 0 1px rgba(89, 181, 87, 0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(89, 181, 87, 0.1);
+                transition: all 0.4s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .benefits-list li:hover {
+                transform: translateX(5px) scale(1.02);
+                box-shadow: 
+                    0 15px 40px rgba(89, 181, 87, 0.12),
+                    0 0 0 1px rgba(89, 181, 87, 0.2);
+            }
+
+            .benefits-list li::before {
+                content: '✨';
+                margin-right: 12px;
+                font-size: 1.3rem;
+                animation: sparkle 3s ease-in-out infinite;
             }
 
             .register-btn {
-                padding: 20px 50px;
+                padding: 20px 45px;
                 font-size: 1.2rem;
             }
-        }
 
-        @media (max-width: 480px) {
-            header {
-                padding: 40px 20px 60px;
+            .quick-register-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
             }
 
-            header h1 {
-                font-size: 2.2rem;
-            }
-
-            .container {
-                padding: 40px 20px;
-            }
-
+            /* Keep floating shapes but make them smaller */
             .floating-shape {
-                display: none;
+                transform: scale(0.7);
+            }
+
+            /* Scale down zap animations but keep them */
+            .zap {
+                transform: scale(0.7);
+            }
+
+            .corner-zap {
+                transform: scale(0.6);
             }
         }
     </style>
@@ -810,6 +1431,21 @@
     <div class="floating-shape shape6"></div>
 
     <header>
+        <!-- Zap Lightning Animations -->
+        <div class="zap-container">
+            <div class="zap zap-1"></div>
+            <div class="zap zap-2"></div>
+            <div class="zap zap-3"></div>
+            <div class="zap zap-4"></div>
+            <div class="zap zap-5"></div>
+            <div class="zap zap-6"></div>
+            <div class="corner-zap corner-zap-1"></div>
+            <div class="corner-zap corner-zap-2"></div>
+            <div class="corner-zap corner-zap-3"></div>
+            <div class="corner-zap corner-zap-4"></div>
+            <div class="electric-border"></div>
+        </div>
+        
         <div class="header-content">
             <div class="brand-logos">
                 <div class="logo-container">
