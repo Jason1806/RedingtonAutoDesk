@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autodesk Innovation Summit 2025 - Redington Sri Lanka</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=SF+Pro+Display:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #ffffff;
+            color: #2d3748;
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== BACKGROUND ANIMATIONS ===== */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('Background.png') center center / cover no-repeat;
+            opacity: 0.95;
+        }
+
+        /* Background overlay for smooth transition */
+        .bg-overlay {
+            position: fixed;
+            top: 100vh;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 30%, #000000 70%, #ffffff 100%);
+        }
+
+        /* ===== FLOATING SHAPES ===== */
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            backdrop-filter: blur(15px);
+            animation: float 12s ease-in-out infinite;
+            box-shadow: 
+                0 20px 40px rgba(89, 181, 87, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+
+        .shape1 {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 5%;
+            background: linear-gradient(135deg, rgba(89, 181, 87, 0.3), rgba(0, 0, 0, 0.1));
+            animation-delay: 0s;
+        }
+
+        .shape2 {
+            width: 80px;
+            height: 80px;
+            top: 40%;
+            right: 10%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(89, 181, 87, 0.2));
+            animation-delay: 2s;
+        }
+
+        .shape3 {
+            width: 150px;
+            height: 150px;
+            bottom: 15%;
+            left: 60%;
+            background: linear-gradient(135deg, rgba(89, 181, 87, 0.25), rgba(255, 255, 255, 0.3));
+            animation-delay: 4s;
+        }
+
+        .shape4 {
+            width: 100px;
+            height: 100px;
+            top: 70%;
+            left: 15%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.15), rgba(89, 181, 87, 0.2));
+            animation-delay: 6s;
+        }
+
+        .shape5 {
+            width: 60px;
+            height: 60px;
+            top: 25%;
+            right: 30%;
+            background: linear-gradient(135deg, rgba(89, 181, 87, 0.4), rgba(255, 255, 255, 0.2));
+            animation-delay: 1s;
+        }
+
+        .shape6 {
+            width: 90px;
+            height: 90px;
+            bottom: 40%;
+            right: 5%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(89, 181, 87, 0.3));
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1); 
+                opacity: 0.8;
+            }
+            33% { 
+                transform: translateY(-25px) rotate(120deg) scale(1.05); 
+                opacity: 1;
+            }
+            66% { 
+                transform: translateY(-15px) rotate(240deg) scale(0.95); 
+                opacity: 0.9;
+            }
+        }
+
+        /* ===== HEADER SECTION ===== */
+        header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.8) 100%);
+            color: white;
+            padding: 60px 30px 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 3;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== BRAND LOGOS ===== */
+        .brand-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 30px;
+            animation: logoEntrance 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes logoEntrance {
+            0% { 
+                opacity: 0; 
+                transform: scale(0.5) translateY(-50px); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1) translateY(0); 
+            }
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            max-width: 180px;
+            height: auto;
+        }
+
+        .autodesk-logo {
+            max-width: 180px;
+            height: auto;
+        }
+
+        .logo-divider {
+            width: 3px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+            animation: dividerGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes dividerGlow {
+            0%, 100% { 
+                opacity: 0.6; 
+                transform: scaleY(1);
+            }
+            50% { 
+                opacity: 0.8; 
+                transform: scaleY(1.05);
+            }
+        }
+
+        /* ===== HEADER TYPOGRAPHY ===== */
+        header h1 {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            font-size: 3.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+            background: linear-gradient(45deg, #fff, #59B557, #fff, #59B557);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleEntrance 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s both,
+                       textShimmer 6s ease-in-out infinite;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        @keyframes titleEntrance {
+            0% { 
+                opacity: 0; 
+                transform: translateY(-50px) scale(0.8); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        @keyframes textShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .event-subtitle {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: subtitleEntrance 2s ease-out 1s both;
+        }
+
+        @keyframes subtitleEntrance {
+            0% { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        header p {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            animation: taglineEntrance 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1.2s both;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 15px;
+            letter-spacing: -0.01em;
+        }
+
+        @keyframes taglineEntrance {
+            0% { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.9); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        .event-tagline {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 25px;
+            font-style: italic;
+            animation: taglineEntrance 2s ease-out 1.5s both;
+        }
+
+        /* ===== QUICK REGISTER BUTTON ===== */
+        .quick-register {
+            margin-top: 30px;
+            animation: quickRegisterEntrance 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 2s both;
+        }
+
+        .quick-register-btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: rgba(89, 181, 87, 0.9);
+            backdrop-filter: blur(15px);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(89, 181, 87, 0.6);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            letter-spacing: 0.02em;
+        }
+
+        .quick-register-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: rgba(89, 181, 87, 1);
+            box-shadow: 0 15px 40px rgba(89, 181, 87, 0.6);
+            border: 1px solid rgba(89, 181, 87, 0.8);
+        }
+
+        @keyframes quickRegisterEntrance {
+            0% { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.9); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            max-width: 1200px;
+            margin: -60px auto 80px;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.98) 0%, 
+                rgba(248, 249, 250, 0.95) 25%,
+                rgba(0, 0, 0, 0.05) 50%,
+                rgba(248, 249, 250, 0.95) 75%,
+                rgba(255, 255, 255, 0.98) 100%);
+            backdrop-filter: blur(25px);
+            padding: 80px 60px;
+            border-radius: 32px;
+            box-shadow: 
+                0 40px 100px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(89, 181, 87, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+            position: relative;
+            animation: containerEntrance 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1s both;
+            overflow: hidden;
+        }
+
+        @keyframes containerEntrance {
+            0% { 
+                opacity: 0; 
+                transform: translateY(80px) scale(0.9); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, 
+                #59B557 0%, 
+                #018A44 25%, 
+                #026937 50%, 
+                #018A44 75%, 
+                #59B557 100%);
+            border-radius: 32px 32px 0 0;
+            animation: topBorderGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes topBorderGlow {
+            0%, 100% { box-shadow: 0 0 25px rgba(89, 181, 87, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(1, 138, 68, 0.6); }
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h2 {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            color: transparent;
+            background: linear-gradient(45deg, #000000, #59B557, #000000);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: textShimmer 5s ease-in-out infinite, headingEntrance 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1.5s both;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+
+        h3 {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            color: transparent;
+            background: linear-gradient(45deg, #000000, #59B557, #000000);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: textShimmer 4s ease-in-out infinite;
+            font-size: 2.4rem;
+            margin: 50px 0 35px;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            position: relative;
+        }
+
+        @keyframes headingEntrance {
+            0% { 
+                opacity: 0; 
+                transform: translateY(-30px) scale(0.9); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #000000, #59B557, #000000);
+            border-radius: 2px;
+            animation: underlineGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes underlineGlow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(89, 181, 87, 0.4);
+                transform: translateX(-50%) scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(89, 181, 87, 0.8);
+                transform: translateX(-50%) scale(1.1);
+            }
+        }
+
+        .intro-text {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            color: #2d3748;
+            animation: textReveal 2s ease-out 2s both;
+            text-align: center;
+            line-height: 1.8;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            padding: 35px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,249,250,0.95), rgba(0,0,0,0.02));
+            border-radius: 24px;
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(89, 181, 87, 0.15);
+            backdrop-filter: blur(15px);
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        @keyframes textReveal {
+            0% { 
+                opacity: 0; 
+                transform: translateY(30px);
+                filter: blur(5px);
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0);
+                filter: blur(0px);
+            }
+        }
+
+        /* ===== EVENT DETAILS ===== */
+        .event-details {
+            background: linear-gradient(135deg, 
+                rgba(89, 181, 87, 0.08) 0%, 
+                rgba(255, 255, 255, 0.95) 25%,
+                rgba(248, 249, 250, 0.9) 50%,
+                rgba(255, 255, 255, 0.95) 75%,
+                rgba(89, 181, 87, 0.08) 100%);
+            padding: 50px;
+            border-radius: 28px;
+            margin: 60px 0;
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.08),
+                0 0 0 1px rgba(89, 181, 87, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            animation: detailsEntrance 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 2.5s both;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+        }
+
+        @keyframes detailsEntrance {
+            0% { 
+                opacity: 0; 
+                transform: translateY(50px) scale(0.95); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        .event-details::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #59B557, #018A44, #026937, #59B557, #018A44, #59B557);
+            background-size: 300% 300%;
+            animation: borderFlow 6s ease infinite;
+            border-radius: 28px 28px 0 0;
+        }
+
+        @keyframes borderFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .event-details-title {
+            text-align: center;
+            color: transparent;
+            background: linear-gradient(45deg, #000000, #59B557, #000000);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: textShimmer 3s ease-in-out infinite;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .event-details p {
+            margin: 20px 0;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.7));
+            padding: 18px 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(89, 181, 87, 0.08);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            color: #2d3748;
+            font-weight: 500;
+        }
+
+        .event-details p:hover {
+            transform: scale(1.02) translateY(-2px);
+            box-shadow: 0 15px 40px rgba(89, 181, 87, 0.12);
+        }
+
+        .event-details p strong {
+            min-width: 150px;
+            color: transparent;
+            background: linear-gradient(45deg, #000000, #59B557);
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        /* ===== BENEFITS LIST ===== */
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 40px 0;
+        }
+
+        .benefits-list li {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.95), 
+                rgba(248, 249, 250, 0.9));
+            margin: 20px 0;
+            padding: 25px 30px;
+            border-radius: 20px;
+            box-shadow: 
+                0 15px 40px rgba(89, 181, 87, 0.08),
+                0 0 0 1px rgba(89, 181, 87, 0.1);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #2d3748;
+            line-height: 1.6;
+            animation: listItemEntrance 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+        }
+
+        .benefits-list li:nth-child(1) { animation-delay: 3s; }
+        .benefits-list li:nth-child(2) { animation-delay: 3.2s; }
+        .benefits-list li:nth-child(3) { animation-delay: 3.4s; }
+        .benefits-list li:nth-child(4) { animation-delay: 3.6s; }
+
+        @keyframes listItemEntrance {
+            0% { 
+                opacity: 0; 
+                transform: translateX(-50px) scale(0.9); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateX(0) scale(1); 
+            }
+        }
+
+        .benefits-list li:hover {
+            transform: translateX(10px) scale(1.02);
+            box-shadow: 
+                0 20px 50px rgba(89, 181, 87, 0.15),
+                0 0 0 1px rgba(89, 181, 87, 0.3),
+                0 0 30px rgba(89, 181, 87, 0.2);
+        }
+
+        .benefits-list li::before {
+            content: '✨';
+            margin-right: 15px;
+            font-size: 1.4rem;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+                filter: hue-rotate(0deg);
+            }
+            50% { 
+                transform: scale(1.1) rotate(180deg); 
+                filter: hue-rotate(120deg);
+            }
+        }
+
+        /* ===== RSVP SECTION ===== */
+        .rsvp-section {
+            text-align: center;
+            margin: 50px 0 40px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,249,250,0.8));
+            border-radius: 24px;
+            box-shadow: 0 15px 40px rgba(89, 181, 87, 0.08);
+            backdrop-filter: blur(15px);
+        }
+
+        .rsvp-section strong {
+            color: transparent;
+            background: linear-gradient(45deg, #000000, #59B557);
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .phone-link {
+            color: transparent;
+            background: linear-gradient(45deg, #000000, #59B557);
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .phone-link:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(89, 181, 87, 0.3);
+        }
+
+        /* ===== REGISTER BUTTONS ===== */
+        .register-btn {
+            display: inline-block;
+            padding: 25px 60px;
+            background: linear-gradient(135deg, 
+                #59B557 0%, 
+                #018A44 25%, 
+                #026937 50%, 
+                #018A44 75%, 
+                #59B557 100%);
+            background-size: 300% 300%;
+            animation: btnGradientFlow 6s ease infinite;
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 
+                0 20px 60px rgba(89, 181, 87, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            margin: 40px auto;
+            display: block;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes btnGradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .register-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 25px 80px rgba(89, 181, 87, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .container {
+                margin: -40px 20px 60px;
+                padding: 60px 30px;
+                border-radius: 24px;
+            }
+
+            header h1 {
+                font-size: 2.8rem;
+            }
+
+            h2 {
+                font-size: 2.4rem;
+            }
+
+            h3 {
+                font-size: 2rem;
+            }
+
+            .brand-logos {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .logo-divider {
+                width: 60px;
+                height: 3px;
+            }
+
+            .benefits-list li {
+                padding: 20px 25px;
+                font-size: 1rem;
+            }
+
+            .floating-register {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .floating-register-btn {
+                padding: 15px 25px;
+                font-size: 1rem;
+            }
+
+            .intro-text {
+                padding: 25px;
+                font-size: 1.1rem;
+            }
+
+            .event-details {
+                padding: 35px 25px;
+            }
+
+            .register-btn {
+                padding: 20px 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 40px 20px 60px;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            .container {
+                padding: 40px 20px;
+            }
+
+            .floating-shape {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+    <div class="bg-overlay"></div>
+
+    <!-- Floating Shapes -->
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+    <div class="floating-shape shape3"></div>
+    <div class="floating-shape shape4"></div>
+    <div class="floating-shape shape5"></div>
+    <div class="floating-shape shape6"></div>
+
+    <header>
+        <div class="header-content">
+            <div class="brand-logos">
+                <div class="logo-container">
+                    <img src="Redington logo.png" alt="Redington" class="logo">
+                </div>
+                <div class="logo-divider"></div>
+                <div class="logo-container">
+                    <img src="autodesk-vad-partner-rgb-logo-white[1].png" alt="Autodesk" class="autodesk-logo">
+                </div>
+            </div>
+            <p class="event-subtitle">Exclusively Presents</p>
+            <h1>Autodesk Innovation Summit 2025</h1>
+            <p>Where Design Meets Tomorrow</p>
+            <p class="event-tagline">Sri Lanka's Premier Technology & Design Innovation Conference</p>
+            <div class="quick-register">
+                <a href="https://forms.gle/your-google-form-link" target="_blank" class="quick-register-btn">
+                    Register Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Transform Your Creative Vision</h2>
+        <p class="intro-text">
+            Join Redington Sri Lanka and Autodesk for an extraordinary summit that will reshape how you approach design, engineering, and innovation. As Sri Lanka's leading technology distributor and Autodesk's trusted partner, we invite industry leaders, creative professionals, and visionaries to explore groundbreaking solutions that are revolutionizing architecture, construction, manufacturing, and digital design worldwide.
+        </p>
+        
+        <div class="event-details">
+            <div class="event-details-title">Event Details</div>
+            <p><strong>📅 Date:</strong> 11th September 2025</p>
+            <p><strong>🕒 Time:</strong> 8.30AM - 2.30PM</p>
+            <p><strong>📍 Venue:</strong> Cinnamon Life Colombo</p>
+            <p><strong>👔 Dress Code:</strong> Business Formal</p>
+        </div>
+
+        <h3>What You'll Experience</h3>
+        <ul class="benefits-list">
+            <li>Exclusive first look at Autodesk's latest breakthrough technologies and software innovations</li>
+            <li>Interactive workshops led by certified Autodesk experts and international thought leaders</li>
+            <li>Inspiring case studies showcasing real-world digital transformation success stories</li>
+            <li>Premium networking opportunities with industry pioneers, decision-makers, and creative professionals</li>
+        </ul>
+
+        <div class="rsvp-section">
+            <strong>Secure Your Exclusive Invitation</strong>
+            <p>Contact: Sathya – <a href="tel:+94770467939" class="phone-link">+94 770467939</a></p>
+        </div>
+
+        <a class="register-btn" href="https://forms.gle/your-google-form-link" target="_blank">
+            Register Now
+        </a>
+    </div>
+</body>
+</html>
